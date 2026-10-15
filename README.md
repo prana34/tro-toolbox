@@ -1,4 +1,4 @@
-﻿# TRO Toolbox Plus
+﻿# TRO Toolbox
 
 TRO Toolbox Plus adalah aplikasi web sederhana untuk membantu mahasiswa Teknologi Rekayasa Otomasi (TRO) dan bidang teknik terkait melakukan perhitungan teknik dasar.
 
