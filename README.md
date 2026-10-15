@@ -47,4 +47,4 @@ Mahasiswa Teknologi Rekayasa Otomasi, pelajar bidang teknik, dan pemula yang ing
 
 ---
 
-**TRO Toolbox Plus — Belajar, Menghitung, dan Berkarya di Dunia Otomasi.**
+**TRO Toolbox — Belajar, Menghitung, dan Berkarya di Dunia Otomasi.**
