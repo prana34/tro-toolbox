@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TRO Toolbox: kalkulator teknik, decoder warna resistor, library rumus, sejarah penemuan, dan riwayat perhitungan.">
+  <title>TRO Toolbox | Engineering Toolkit</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<header id="atas">
+  <div class="header-content">
+    <p class="eyebrow">ENGINEERING TOOLKIT</p>
+    <h1>TRO Toolbox</h1>
+    <p>Teman belajar teknik, dari teori sampai perhitungan.</p>
+  </div>
+</header>
+
+<main>
+  <section class="welcome">
+    <p class="eyebrow">WELCOME, ENGINEER!</p>
+    <h2>Belajar teknik jadi lebih praktis.</h2>
+    <p>Kalkulator, referensi rumus, warna resistor, dan catatan perhitungan dalam satu tempat.</p>
+  </section>
+
+  <section class="tools">
+    <h2>Engineering Tools</h2>
+    <p class="section-description">Pilih alat atau referensi yang ingin dibuka.</p>
+    <div class="tool-list">
+      <button type="button" data-target="kalkulator-ohm"><strong>01 / Hukum Ohm</strong><span>Menghitung tegangan, arus, hambatan, dan daya.</span><span class="card-link">Buka alat →</span></button>
+      <button type="button" data-target="kalkulator-resistor"><strong>02 / Resistor Seri-Paralel</strong><span>Menghitung hambatan total rangkaian.</span><span class="card-link">Buka alat →</span></button>
+      <button type="button" data-target="kalkulator-error"><strong>03 / Error Calculator</strong><span>Menghitung error absolut dan persentase.</span><span class="card-link">Buka alat →</span></button>
+      <button type="button" data-target="kalkulator-konversi"><strong>04 / Unit Converter</strong><span>Konversi satuan listrik dan elektronika.</span><span class="card-link">Buka alat →</span></button>
+      <button type="button" data-target="kalkulator-warna"><strong>05 / Resistor Color Code</strong><span>Membaca resistor 4 dan 5 gelang.</span><span class="card-link">Buka decoder →</span></button>
+      <button type="button" data-target="library-rumus"><strong>06 / Formula Library</strong><span>Rumus elektronika dan penjelasan singkat.</span><span class="card-link">Buka library →</span></button>
+      <button type="button" data-target="sejarah-penemuan"><strong>07 / Sejarah Penemuan</strong><span>Tokoh dan asal-usul beberapa hukum listrik.</span><span class="card-link">Jelajahi sejarah →</span></button>
+      <button type="button" data-target="riwayat"><strong>08 / Riwayat Perhitungan</strong><span>Lihat perhitungan yang pernah dilakukan.</span><span class="card-link">Buka riwayat →</span></button>
+    </div>
+  </section>
+
+  <section class="calculator" id="kalkulator-ohm">
+    <div class="section-heading"><p class="eyebrow">TOOL 01</p><h2>Kalkulator Hukum Ohm</h2><p>Untuk mencari satu besaran, isi dua besaran lainnya.</p></div>
+    <label for="operasiOhm">Besaran yang dicari</label>
+    <select id="operasiOhm">
+      <option value="arus">Arus (I)</option><option value="tegangan">Tegangan (V)</option><option value="hambatan">Hambatan (R)</option><option value="daya">Daya (P)</option>
+    </select>
+    <div class="form-grid">
+      <div class="field"><label for="nilaiV">Tegangan (V)</label><input type="number" id="nilaiV" min="0" step="any" placeholder="Contoh: 12"></div>
+      <div class="field"><label for="nilaiI">Arus (A)</label><input type="number" id="nilaiI" min="0" step="any" placeholder="Contoh: 3"></div>
+      <div class="field"><label for="nilaiR">Hambatan (Ω)</label><input type="number" id="nilaiR" min="0" step="any" placeholder="Contoh: 4"></div>
+    </div>
+    <button type="button" class="primary-button" id="hitungOhm">Hitung hasil</button>
+    <div id="hasilOhm" class="result" aria-live="polite"><span class="result-placeholder">Hasil perhitungan akan tampil di sini.</span></div>
+  </section>
+
+  <section class="calculator" id="kalkulator-resistor">
+    <div class="section-heading"><p class="eyebrow">TOOL 02</p><h2>Kalkulator Resistor Seri-Paralel</h2><p>Hitung hambatan total dari 2 sampai 5 resistor.</p></div>
+    <label for="jenisResistor">Jenis rangkaian</label>
+    <select id="jenisResistor"><option value="seri">Seri</option><option value="paralel">Paralel</option></select>
+    <label for="jumlahResistor">Jumlah resistor</label>
+    <select id="jumlahResistor"><option value="2">2 resistor</option><option value="3">3 resistor</option><option value="4">4 resistor</option><option value="5">5 resistor</option></select>
+    <div class="form-grid">
+      <div class="field"><label for="r1">Resistor 1 (Ω)</label><input type="number" id="r1" min="0" step="any" value="100"></div>
+      <div class="field"><label for="r2">Resistor 2 (Ω)</label><input type="number" id="r2" min="0" step="any" value="200"></div>
+      <div class="field resistor-extra" id="fieldR3" hidden><label for="r3">Resistor 3 (Ω)</label><input type="number" id="r3" min="0" step="any" value="300"></div>
+      <div class="field resistor-extra" id="fieldR4" hidden><label for="r4">Resistor 4 (Ω)</label><input type="number" id="r4" min="0" step="any" value="400"></div>
+      <div class="field resistor-extra" id="fieldR5" hidden><label for="r5">Resistor 5 (Ω)</label><input type="number" id="r5" min="0" step="any" value="500"></div>
+    </div>
+    <button type="button" class="primary-button" id="hitungResistor">Hitung hambatan total</button>
+    <div id="hasilResistor" class="result" aria-live="polite"><span class="result-placeholder">Hasil perhitungan akan tampil di sini.</span></div>
+  </section>
+
+  <section class="calculator" id="kalkulator-error">
+    <div class="section-heading"><p class="eyebrow">TOOL 03</p><h2>Error Calculator</h2><p>Bandingkan hasil pengukuran dengan nilai acuan.</p></div>
+    <div class="form-grid">
+      <div class="field"><label for="nilaiAcuan">Nilai acuan</label><input type="number" id="nilaiAcuan" step="any" placeholder="Contoh: 10"></div>
+      <div class="field"><label for="nilaiUkur">Nilai pengukuran</label><input type="number" id="nilaiUkur" step="any" placeholder="Contoh: 9.8"></div>
+    </div>
+    <button type="button" class="primary-button" id="hitungError">Hitung error</button>
+    <div id="hasilError" class="result" aria-live="polite"><span class="result-placeholder">Hasil perhitungan akan tampil di sini.</span></div>
+  </section>
+
+  <section class="calculator" id="kalkulator-konversi">
+    <div class="section-heading"><p class="eyebrow">TOOL 04</p><h2>Unit Converter</h2><p>Konversi satuan listrik dan elektronika.</p></div>
+    <label for="jenisKonversi">Kategori satuan</label>
+    <select id="jenisKonversi">
+      <option value="tegangan">Tegangan</option><option value="arus">Arus</option><option value="hambatan">Hambatan</option><option value="daya">Daya</option><option value="kapasitansi">Kapasitansi</option><option value="frekuensi">Frekuensi</option>
+    </select>
+    <div class="form-grid">
+      <div class="field"><label for="nilaiKonversi">Nilai</label><input type="number" id="nilaiKonversi" step="any" placeholder="Masukkan angka"></div>
+      <div class="field"><label for="satuanDari">Dari satuan</label><select id="satuanDari"></select></div>
+      <div class="field"><label for="satuanKe">Ke satuan</label><select id="satuanKe"></select></div>
+    </div>
+    <button type="button" class="primary-button" id="hitungKonversi">Konversi satuan</button>
+    <div id="hasilKonversi" class="result" aria-live="polite"><span class="result-placeholder">Hasil konversi akan tampil di sini.</span></div>
+  </section>
+
+  <section class="calculator" id="kalkulator-warna">
+    <div class="section-heading"><p class="eyebrow">TOOL 05</p><h2>Resistor Color Code</h2><p>Pilih 4 atau 5 gelang sesuai resistor fisik. Baca dari sisi berlawanan dengan gelang toleransi.</p></div>
+    <label for="jumlahGelang">Jumlah gelang</label>
+    <select id="jumlahGelang"><option value="4">4 gelang</option><option value="5">5 gelang</option></select>
+    <div class="resistor-visual-wrap">
+      <div class="resistor-visual" aria-label="Ilustrasi gelang resistor">
+        <span class="resistor-lead"></span><div class="resistor-body">
+          <span class="band" id="visualBand1"></span><span class="band" id="visualBand2"></span><span class="band" id="visualBand3"></span><span class="band" id="visualBand4"></span><span class="band" id="visualBand5"></span>
+        </div><span class="resistor-lead"></span>
+      </div>
+    </div>
+    <div class="form-grid" id="inputGelang">
+      <div class="field"><label for="gelang1">Gelang 1</label><select id="gelang1"></select></div>
+      <div class="field"><label for="gelang2">Gelang 2</label><select id="gelang2"></select></div>
+      <div class="field" id="fieldGelang3"><label for="gelang3">Gelang 3</label><select id="gelang3"></select></div>
+      <div class="field"><label id="labelGelang4" for="gelang4">Gelang 4 (pengali)</label><select id="gelang4"></select></div>
+      <div class="field"><label id="labelGelang5" for="gelang5">Gelang 5 (toleransi)</label><select id="gelang5"></select></div>
+    </div>
+    <button type="button" class="primary-button" id="hitungWarna">Baca nilai resistor</button>
+    <div id="hasilWarna" class="result" aria-live="polite"><span class="result-placeholder">Nilai resistor akan tampil di sini.</span></div>
+    <div class="reference-table-wrap">
+      <h3>Panduan warna</h3>
+      <table class="reference-table">
+        <thead><tr><th>Warna</th><th>Angka</th><th>Pengali</th><th>Toleransi</th></tr></thead>
+        <tbody id="tabelWarna"></tbody>
+      </table>
+    </div>
+    <p class="small-note">Catatan: warna pada layar bisa berbeda dari warna komponen fisik. Jika nilainya penting untuk rangkaian, konfirmasi dengan multimeter.</p>
+  </section>
+
+  <section class="calculator" id="library-rumus">
+    <div class="section-heading"><p class="eyebrow">REFERENCE 06</p><h2>Formula Library</h2><p>Kumpulan rumus dasar listrik dan elektronika untuk belajar.</p></div>
+    <label for="cariRumus">Cari rumus atau topik</label>
+    <input class="search-input" type="search" id="cariRumus" placeholder="Contoh: Ohm, daya, kapasitor, frekuensi">
+    <div class="formula-grid" id="daftarRumus"></div>
+  </section>
+
+  <section class="calculator" id="sejarah-penemuan">
+    <div class="section-heading"><p class="eyebrow">HISTORY 07</p><h2>Sejarah Penemuan</h2><p>Tokoh, gagasan, dan perkembangan yang membentuk dasar kelistrikan modern.</p></div>
+    <div class="timeline" id="daftarSejarah"></div>
+    <p class="small-note">Catatan: banyak hukum ilmiah berkembang melalui pengamatan dan kontribusi banyak orang. Tahun di bawah menunjukkan tonggak penting, bukan selalu satu-satunya awal penelitian.</p>
+  </section>
+
+  <section class="calculator" id="riwayat">
+    <div class="section-heading"><p class="eyebrow">YOUR WORK 08</p><h2>Riwayat Perhitungan</h2><p>Hasil kalkulasi disimpan di browser pada perangkat ini.</p></div>
+    <div class="history-actions"><span id="jumlahRiwayat" class="history-count">0 perhitungan</span><button type="button" class="secondary-button" id="hapusRiwayat">Hapus semua riwayat</button></div>
+    <div id="daftarRiwayat" class="history-list"><p class="result-placeholder">Belum ada perhitungan.</p></div>
+  </section>
+
+  <button type="button" id="kembaliKeAtas">↑ Kembali ke Atas</button>
+</main>
+
+<footer>
+  <p>TRO Toolbox · Engineering made simpler.</p>
+  <p class="footer-note">Gunakan hasil sebagai alat bantu belajar dan periksa kembali satuan serta asumsi rangkaian.</p>
+</footer>
+</body>
+</html>

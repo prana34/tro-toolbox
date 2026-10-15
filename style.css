@@ -1,0 +1,110 @@
+/* ===== TRO TOOLBOX DESIGN SYSTEM ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0f172a; --surface: #111c32; --card: #1e293b; --card-hover: #164e63;
+  --border: #334155; --cyan: #38bdf8; --blue: #0284c7; --text: #e2e8f0; --muted: #94a3b8;
+}
+html { scroll-behavior: smooth; }
+body { font-family: Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+button, input, select { font: inherit; }
+button, select { cursor: pointer; }
+header { text-align: center; padding: 48px 20px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.header-content { max-width: 1000px; margin: auto; }
+header h1 { color: var(--cyan); font-size: clamp(30px, 5vw, 42px); letter-spacing: 1px; }
+header p:not(.eyebrow) { color: var(--muted); margin-top: 8px; }
+main { width: 90%; max-width: 1000px; margin: 40px auto; }
+.eyebrow { color: var(--cyan); font-size: 12px; font-weight: bold; letter-spacing: 2px; margin-bottom: 8px; }
+.welcome { padding: 32px; background: linear-gradient(135deg, #172554, #164e63); border: 1px solid #2563eb; border-radius: 16px; margin-bottom: 40px; }
+.welcome h2 { color: white; font-size: clamp(23px, 4vw, 30px); margin-bottom: 10px; }
+.welcome p:not(.eyebrow) { color: #cbd5e1; max-width: 700px; }
+.tools { margin-bottom: 40px; }
+.tools h2, .section-heading h2 { font-size: 25px; margin-bottom: 8px; }
+.section-description, .section-heading > p:not(.eyebrow) { color: var(--muted); margin-bottom: 20px; }
+.tool-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.tool-list button { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-height: 150px; padding: 24px; text-align: left; background: var(--card); color: var(--text); border: 1px solid var(--border); border-radius: 14px; transition: background-color .2s, border-color .2s, transform .2s; }
+.tool-list button strong { color: var(--cyan); font-size: 17px; }
+.tool-list button span { font-size: 14px; font-weight: normal; line-height: 1.6; }
+.tool-list button .card-link { color: var(--cyan); font-weight: bold; margin-top: auto; }
+.tool-list button:hover { background: var(--card-hover); border-color: var(--cyan); transform: translateY(-3px); }
+.calculator { padding: 28px; margin-bottom: 28px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; scroll-margin-top: 24px; }
+.section-heading { margin-bottom: 22px; }
+.section-heading h2 { color: white; }
+.calculator label { display: block; color: #cbd5e1; font-size: 14px; margin-bottom: 7px; }
+.calculator input, .calculator select { width: 100%; min-width: 0; padding: 12px 14px; margin-bottom: 18px; background: var(--bg); color: var(--text); border: 1px solid #475569; border-radius: 8px; }
+.calculator input::placeholder { color: #64748b; }
+.calculator input:focus, .calculator select:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 2px rgb(56 189 248 / 12%); }
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; }
+.field { min-width: 0; }
+.resistor-extra[hidden] { display: none; }
+.primary-button, .secondary-button { padding: 12px 22px; border-radius: 8px; font-weight: bold; transition: .2s ease; }
+.primary-button { background: var(--blue); color: white; border: 1px solid transparent; }
+.primary-button:hover { background: #0369a1; transform: translateY(-1px); }
+.secondary-button { background: var(--card); color: var(--cyan); border: 1px solid var(--border); }
+.secondary-button:hover { background: var(--card-hover); border-color: var(--cyan); }
+.result { display: flex; flex-direction: column; gap: 8px; min-height: 65px; margin-top: 22px; padding: 20px; background: #0b1220; border: 1px solid var(--border); border-left: 4px solid var(--cyan); border-radius: 10px; overflow-wrap: anywhere; }
+.result-placeholder { color: var(--muted); font-size: 14px; }
+.result-label { color: var(--muted); font-size: 13px; }
+.result-formula { color: var(--text); font-size: 15px; }
+.result-value { color: var(--cyan); font-size: 24px; font-weight: bold; }
+#kembaliKeAtas { display: block; margin: 32px auto 0; padding: 12px 22px; background: var(--card); color: var(--cyan); border: 1px solid var(--border); border-radius: 10px; font-weight: bold; transition: .2s ease; }
+#kembaliKeAtas:hover { background: var(--card-hover); border-color: var(--cyan); transform: translateY(-2px); }
+button:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+
+/* Resistor bands */
+.resistor-visual-wrap { background: #0b1220; border: 1px solid var(--border); border-radius: 12px; padding: 24px 12px; margin: 4px 0 24px; overflow: hidden; }
+.resistor-visual { display: flex; align-items: center; justify-content: center; width: 100%; }
+.resistor-lead { height: 5px; flex: 1; max-width: 150px; background: #94a3b8; }
+.resistor-body { display: flex; align-items: stretch; justify-content: space-evenly; gap: clamp(8px, 3vw, 20px); width: min(470px, 72%); height: 48px; padding: 0 20px; background: linear-gradient(180deg, #e9d5a4, #c8a96a 48%, #a8874f); border: 1px solid #d6b779; border-radius: 15px; box-shadow: inset 0 4px 5px rgb(255 255 255 / 25%), inset 0 -4px 5px rgb(0 0 0 / 18%); }
+.band { display: block; width: 12px; min-width: 8px; height: 100%; background: #000; border-left: 1px solid rgb(255 255 255 / 15%); border-right: 1px solid rgb(0 0 0 / 20%); }
+.reference-table-wrap { margin-top: 28px; }
+.reference-table-wrap h3 { margin-bottom: 12px; }
+.reference-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.reference-table th, .reference-table td { text-align: left; padding: 10px; border-bottom: 1px solid var(--border); }
+.color-dot { display: inline-block; width: 14px; height: 14px; border: 1px solid rgb(255 255 255 / 35%); border-radius: 4px; vertical-align: middle; margin-right: 8px; }
+.small-note { color: var(--muted); font-size: 13px; margin-top: 16px; }
+
+/* Formula library */
+.search-input { width: 100%; padding: 12px 14px; margin: 4px 0 20px; color: var(--text); background: var(--bg); border: 1px solid #475569; border-radius: 8px; }
+.formula-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.formula-card { padding: 18px; border: 1px solid var(--border); background: var(--card); border-radius: 12px; }
+.formula-card h3 { color: var(--cyan); font-size: 16px; margin-bottom: 8px; }
+.formula-equation { font-size: 18px; color: white; font-weight: bold; margin: 10px 0; overflow-wrap: anywhere; }
+.formula-card p { font-size: 14px; color: #cbd5e1; }
+.formula-tag { display: inline-block; font-size: 11px; color: var(--cyan); border: 1px solid #155e75; padding: 3px 8px; border-radius: 999px; margin-top: 10px; }
+.empty-state { color: var(--muted); padding: 16px; }
+
+/* History timeline */
+.timeline { position: relative; margin-left: 7px; padding-left: 24px; border-left: 2px solid #155e75; }
+.timeline-item { position: relative; padding: 0 0 24px; }
+.timeline-item::before { content: ""; position: absolute; left: -31px; top: 5px; width: 12px; height: 12px; background: var(--cyan); border: 3px solid var(--surface); border-radius: 50%; }
+.timeline-year { color: var(--cyan); font-size: 13px; font-weight: bold; }
+.timeline-item h3 { margin: 4px 0 6px; font-size: 17px; }
+.timeline-item p { color: #cbd5e1; font-size: 14px; }
+
+/* Calculation history */
+.history-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.history-count { color: var(--muted); font-size: 14px; }
+.history-list { display: grid; gap: 12px; }
+.history-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.history-item-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.history-item h3 { font-size: 15px; color: var(--cyan); }
+.history-item time { font-size: 12px; color: var(--muted); }
+.history-item p { margin-top: 7px; font-size: 14px; overflow-wrap: anywhere; }
+.history-delete { margin-top: 10px; color: #fca5a5; background: transparent; border: 0; text-decoration: underline; font-size: 13px; }
+
+footer { text-align: center; padding: 28px 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; }
+.footer-note { max-width: 650px; margin: 8px auto 0; }
+@media (max-width: 600px) {
+  header { padding: 36px 18px; }
+  main { width: 92%; margin: 26px auto; }
+  .welcome, .calculator { padding: 22px; }
+  .tool-list, .form-grid, .formula-grid { grid-template-columns: 1fr; }
+  .tool-list button { min-height: 130px; padding: 20px; }
+  .primary-button { width: 100%; }
+  .result-value { font-size: 22px; }
+  .history-actions { align-items: stretch; flex-direction: column; }
+  .history-actions .secondary-button { width: 100%; }
+  .reference-table { font-size: 12px; }
+  .reference-table th, .reference-table td { padding: 8px 5px; }
+  .resistor-body { gap: 7px; padding: 0 12px; }
+}
